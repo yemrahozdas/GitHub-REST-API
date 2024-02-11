@@ -13,9 +13,10 @@ const insertHTML = function (el) {
     <span>Ad: ${el.name} (${el.login})</span>
     <span>Takipçi: ${el.followers}</span>
     <span>Takip Edilen: ${el.following}</span>
-    <span>Repoları: ${el.repos_url.length}</span>
+    <span>Repoları: ${el.public_repos}</span>
   </div>`;
   main.insertAdjacentHTML("afterbegin", HTML);
+  console.log(el.repos_url);
 };
 
 const insertError = function (err) {
