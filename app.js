@@ -1,7 +1,7 @@
-const main = document.querySelector(".main");
-const input = document.querySelector("#name");
-const gonder = document.querySelector(".gonder");
-console.log(new Date());
+const main = document.querySelector('.main');
+const input = document.querySelector('#name');
+const gonder = document.querySelector('.gonder');
+
 const insertHTML = function (el) {
   const HTML = `<div class="main-body">
     <img
@@ -15,31 +15,30 @@ const insertHTML = function (el) {
     <span>Takip Edilen: ${el.following}</span>
     <span>Repoları: ${el.public_repos}</span>
   </div>`;
-  main.insertAdjacentHTML("afterbegin", HTML);
-  console.log(el.repos_url);
+  main.insertAdjacentHTML('afterbegin', HTML);
 };
 
 const insertError = function (err) {
   const errorHTML = `<div class="main-body">
   <span>Kullanıcı bulunamadı... ${err}</span>
 </div>`;
-  main.insertAdjacentHTML("afterbegin", errorHTML);
+  main.insertAdjacentHTML('afterbegin', errorHTML);
 };
 
-const abc = function (name) {
-  fetch(`https://api.github.com/users/${name}`)
-    .then((res) => res.json())
-    .then((data) => {
-      main.innerHTML = "";
-      insertHTML(data);
-    })
-    .catch((err) => {
-      insertError(err);
-    });
+const fetchProfil = async function (name) {
+  try {
+    const res = await fetch(`https://api.github.com/users/${name}`);
+    const data = await res.json();
+    if (data.message === 'Not Found') insertError(data.message);
+    else insertHTML(data);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-gonder.addEventListener("click", function () {
+gonder.addEventListener('click', function () {
   let inputValue = input.value.trim();
-  abc(inputValue);
-  input.value = "";
+  main.textContent = '';
+  fetchProfil(inputValue);
+  input.value = '';
 });
