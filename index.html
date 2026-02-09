@@ -1,19 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GitHub Profil Ara</title>
     <script src="app.js" defer></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="dis-kasa">
-      <div>
-        <input type="text" placeholder="Kullanıcı adı girin" id="name" />
-        <button class="gonder">Ara</button>
+    <div class="container">
+      <header>
+        <h1><i class="fab fa-github"></i> GitHub Profil Ara</h1>
+      </header>
+
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Kullanıcı adı girin..."
+          id="name"
+          autocomplete="off"
+        />
+        <button class="gonder"><i class="fas fa-search"></i> Ara</button>
       </div>
+
       <main class="main"></main>
     </div>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </body>
 </html>
